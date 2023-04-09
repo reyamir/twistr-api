@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	twitterscraper "github.com/n0madic/twitter-scraper"
 )
@@ -24,5 +25,6 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": resp})
 	})
 
+	r.Use(cors.Default())
 	r.Run()
 }
