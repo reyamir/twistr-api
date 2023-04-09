@@ -15,7 +15,7 @@ func main() {
 	r.GET("/user/:handle", func(c *gin.Context) {
 		user := c.Params.ByName("handle")
 		resp := []string{}
-		for tweet := range scraper.GetTweets(context.Background(), user, 200) {
+		for tweet := range scraper.GetTweets(context.Background(), user, 2000) {
 			if tweet.Error != nil {
 				panic(tweet.Error)
 			}
