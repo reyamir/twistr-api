@@ -13,6 +13,8 @@ func main() {
 	r := gin.Default()
 	scraper := twitterscraper.New()
 
+	r.Use(cors.Default())
+
 	r.GET("/user/:handle", func(c *gin.Context) {
 		user := c.Params.ByName("handle")
 		resp := []string{}
@@ -25,6 +27,5 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": resp})
 	})
 
-	r.Use(cors.Default())
 	r.Run()
 }
